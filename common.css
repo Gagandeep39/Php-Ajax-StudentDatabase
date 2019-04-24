@@ -1,0 +1,15 @@
+button{
+    border: 2%;
+    border-color: black;
+    border-radius: 4px;
+}
+form{
+    padding: 2%;
+}
+input{
+    padding: 1%;
+    margin: 2%;
+}
+label{
+    width: 70%;
+}

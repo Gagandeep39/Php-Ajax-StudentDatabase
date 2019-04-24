@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="common.css">
+    <script type="text/javascript">
+        function ajaxFunction(){
+            var ajaxRequest = new XMLHttpRequest();
+        ajaxRequest.onreadystatechange = function(){
+        if(ajaxRequest.readyState==4){
+            var location = document.getElementById("ajax_view");
+            location.innerHTML = ajaxRequest.response;
+        }
+        }
+        ajaxRequest.open("GET", "view.php", true);
+        ajaxRequest.send();
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="ajax_view">
+        <label for="ajax">This portion will be replaced by table</label>
+    </div>
+    <button onclick="return ajaxFunction()">View Data</button>
+    <br><button onclick="location.href='index.html'">Back</button>
+</body>
+</html>

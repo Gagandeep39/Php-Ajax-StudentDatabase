@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="common.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    function ajaxFunction(){
+       
+        var ajaxFun = new XMLHttpRequest();
+        ajaxFun.onreadystatechange = function(){
+            var location = document.getElementById("location");
+            location.innerHTML = ajaxFun.response;
+        }
+      
+        var name = document.getElementById("name").value;
+        var rollno = document.getElementById("rollno").value;
+        var year = document.getElementById("year").value;
+        
+        var sendString = "rollno=" + rollno  + "&name=" +  name + "&year=" + year;
+        alert(sendString);
+        ajaxFun.open("POST", "update.php", true);
+        ajaxFun.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        ajaxFun.send(sendString);
+    }
+    </script>
+</head>
+<body>
+        <br><label for="rollno">Enter Roll no. to be Updated</label><input type="text" name="rollno" placeholder="Enter New Roll no." id="rollno">
+        <br><label for="name">Enter New Name</label><input type="text" name="name" placeholder="Enter New Name" id="name">
+        <br><label for="year">Enter Year</label><input type="text" name="year" placeholder="Enter New Year" id="year">
+        <br><button type="submit" onclick="return ajaxFunction();">Update data</button>
+        <br><button onclick="location.href='index.html'">Back</button>
+        <div id="location">Update will appear here</div>
+</body>
+</html>

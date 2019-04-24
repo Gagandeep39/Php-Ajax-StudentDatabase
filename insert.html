@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Document</title>
+        <link href="common.css" rel="stylesheet">
+        <script type="text/javascript">
+        function ajaxFunction(){
+
+            var ajaxRequest = new XMLHttpRequest();
+            ajaxRequest.onreadystatechange = function(){
+                if(ajaxRequest.readyState == 4){
+                    var location = document.getElementById("location");
+                    location.innerHTML = ajaxRequest.response;
+                }
+            }
+            var name = document.getElementById("name").value;
+            var rollno = document.getElementById("rollno").value;
+            var year = document.getElementById("year").value;
+            var requestString = "name=" + name + "&rollno=" + rollno + "&year=" + year;
+            ajaxRequest.open("POST", "insert.php", true);
+            ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            ajaxRequest.send(requestString);
+        }
+        </script>
+    </head>
+    <body>
+        <br><label for="name">Name</label>
+        <br><input type="text" id="name" placeholder="Name">
+        <br><label for="rollno">Roll No</label>
+        <br><input type="text" id="rollno" placeholder="rollno">
+        <br><label for="year">Year</label>
+        <br><input type="text" id="year" placeholder="year">
+        <br><button onclick="return ajaxFunction()">Insert</button>
+        <br><button onclick="location.href='index.html'">Back</button>
+        <br><div id="location">You data is displayed here</div>
+    </body>
+
+</html>

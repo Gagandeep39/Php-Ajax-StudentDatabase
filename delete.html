@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="common.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    function ajaxFunction(){
+       
+        var ajaxFun = new XMLHttpRequest();
+        ajaxFun.onreadystatechange = function(){
+            var location = document.getElementById("location");
+            location.innerHTML = ajaxFun.response;
+        }
+      
+        var rollno = document.getElementById("rollno").value;
+        var sendString = "rollno=" + rollno;
+        ajaxFun.open("POST", "delete.php", true);
+        ajaxFun.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        ajaxFun.send(sendString);
+    }
+    </script>
+</head>
+<body>
+        <br><label for="rollno">Enter Roll no. to be Deleted</label><input type="text" name="rollno" placeholder="Enter New Roll no." id="rollno">
+        <br><button type="submit" onclick="return ajaxFunction();">Delete data</button>
+        <br><button onclick="location.href='index.html'">Back</button>
+        <div id="location">Ajax Update will appear here</div>
+</body>
+</html>
